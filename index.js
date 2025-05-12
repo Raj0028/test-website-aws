@@ -4,8 +4,24 @@ import dotenv from 'dotenv';
 import os from 'os';
 dotenv.config();
 
-const cpuCount = os.cpus().length;
-console.log(`CPU Count: ${cpuCount}`);
+
+const systemInfo = {
+  hostname: os.hostname(),
+  platform: os.platform(),
+  arch: os.arch(),
+  release: os.release(),
+  uptime: `${(os.uptime() / 3600).toFixed(2)} hours`,
+  totalMemory: `${(os.totalmem() / (1024 ** 3)).toFixed(2)} GB`,
+  freeMemory: `${(os.freemem() / (1024 ** 3)).toFixed(2)} GB`,
+  cpuCount: os.cpus().length,
+  cpuModel: os.cpus()[0].model,
+  cpuSpeed: `${os.cpus()[0].speed} MHz`,
+  networkInterfaces: os.networkInterfaces(),
+  userInfo: os.userInfo(),
+  loadAverage: os.loadavg(),
+};
+
+console.log('System Info:', systemInfo);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
