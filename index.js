@@ -31,7 +31,7 @@ app.post('/api/contact', async (req, res) => {
 
   try {
     await transporter.sendMail(mailOptions);
-    console.log(`Email send to ${email} from ${mailOptions.from}`);
+    console.log(`Email send to ${mailOptions.to} from ${mailOptions.from}`);
     
     res.status(200).json({ message: 'Email sent successfully!' });
   } catch (error) {
@@ -69,7 +69,7 @@ app.post('/api/quote', async (req, res) => {
   
     try {
       await transporter.sendMail(mailOptions);
-      console.log(`Email send to ${email} from ${mailOptions.from}`);
+    console.log(`Email send to ${mailOptions.to} from ${mailOptions.from}`);
       res.status(200).json({ message: 'Quote sent successfully!' });
     } catch (err) {
       console.error(err);
