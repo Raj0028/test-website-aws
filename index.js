@@ -1,13 +1,17 @@
 import express from 'express';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
+import os from 'os';
 dotenv.config();
+
+const cpuCount = os.cpus().length;
+console.log(`CPU Count: ${cpuCount}`);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.static('public')); // Serve static frontend files
-app.use(express.json()); // For parsing JSON POST body
+app.use(express.json()); // For parsing JSON POST body);
 
 
 // Email endpoint
